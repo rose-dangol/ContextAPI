@@ -1,4 +1,15 @@
+import { useState } from "react";
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+  const {user,login,logout} = useUser();
+  const [inputName, setInputName] = useState('');
+  const Navigate = useNavigate()
+  const handleLogin = ()=>{
+    login(inputName);
+    Navigate("/dashboard");
+  }
   return (
     <div>
       <h1 className="text-3xl mb-6">Welcome</h1>
@@ -12,6 +23,8 @@ function Login() {
             type="text"
             id="name"
             className="border border-solid border-b-neutral-800 rounded-sm"
+            value={inputName}
+            onChange={(e)=>setInputName(e.target.value)}
           />
         </div>
 
@@ -25,7 +38,7 @@ function Login() {
             className="border border-solid border-b-neutral-800 rounded-sm"
           />
         </div>
-        <button className="bg-blue-400 border border-solid border-blue-800 text-white w-min px-4 py-2 rounded-sm cursor-pointer ml-auto">
+        <button onClick={handleLogin} className="bg-blue-400 border border-solid border-blue-800 text-white w-min px-4 py-2 rounded-sm cursor-pointer ml-auto">
           Login
         </button>
       </div>

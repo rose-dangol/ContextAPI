@@ -8,6 +8,7 @@ function ThemeSwitcher() {
         <input
           id="switch-component"
           type="checkbox"
+          
           class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-blue-800 cursor-pointer transition-colors duration-300"
         />
         <label
