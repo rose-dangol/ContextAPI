@@ -3,7 +3,10 @@ import { useUser } from './context/UserContext';
 
 const ProtectedRoutes = () => {
   const {user} = useUser();
-  return user ? <Outlet/> : <Navigate to={"/login"} replace/>
+  const userData = JSON.parse(localStorage.getItem('user'))
+  return (
+    user.isLoggedIn || userData ? <Outlet/> : <Navigate to={"/login"} replace/>
+  )
 };
 
 export default ProtectedRoutes;
