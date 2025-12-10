@@ -3,9 +3,9 @@ import { useUser } from './context/UserContext';
 
 const ProtectedRoutes = () => {
   const {user} = useUser();
-  // const userData = JSON.parse(localStorage.getItem('user'))
+  const userData = JSON.parse(localStorage.getItem('user'))
   return (
-    user.isLoggedIn ? <Outlet/> : <Navigate to={"/login"} replace/>
+    user.isLoggedIn || userData.isLoggedIn ? <Outlet/> : <Navigate to={"/login"} replace/>
   )
 };
 
