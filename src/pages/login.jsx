@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useUser } from "../context/UserContext";
+import { useUserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const {user,login} = useUser();
+  const {user,login} = useUserContext();
   const [inputName, setInputName] = useState('');
   const Navigate = useNavigate()
+  
   const handleLogin = ()=>{
     login(inputName);
     Navigate("/dashboard");
