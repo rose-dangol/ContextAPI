@@ -13,19 +13,22 @@ const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getInitialUser);
 
-  const login = (username) => {
-    setUser({
-      name: username,
-      isLoggedIn: true,
-    });
-    localStorage.setItem("user", JSON.stringify(user));
+const login = (username) => {
+    const updatedUser = {
+      ...user,        
+      name: username,     
+      isLoggedIn: true,   
+    }
+    setUser(updatedUser)
+    localStorage.setItem("user", JSON.stringify(updatedUser)); 
   };
 
   const logout = () => {
-    setUser({
-      name: "",
-      isLoggedIn: false,
-    });
+    const clearUser = {
+      name: '',
+      isLoggedIn : false,
+    };
+    setUser(clearUser);
     localStorage.removeItem("user");
   };
 
