@@ -1,6 +1,11 @@
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from "lucide-react";
+import { useState } from "react";
+import { useThemeContext } from "../../context/ThemeContext";
 
 function ThemeSwitcher() {
+  const { theme, toggleTheme } = useThemeContext();
+  const currentTheme = localStorage.getItem('theme')
+
   return (
     <div className="flex items-center gap-2 fixed top-4 right-4">
       <Sun />
@@ -8,8 +13,8 @@ function ThemeSwitcher() {
         <input
           id="switch-component"
           type="checkbox"
-          
           class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-blue-800 cursor-pointer transition-colors duration-300"
+          onChange={toggleTheme}
         />
         <label
           for="switch-component"
@@ -17,6 +22,7 @@ function ThemeSwitcher() {
         ></label>
       </div>
       <Moon />
+      {currentTheme}
     </div>
   );
 }
