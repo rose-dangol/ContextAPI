@@ -8,7 +8,7 @@ function Dashboard() {
     logout()
   }
   return (
-    <div>
+    <div className=''>
       <ThemeSwitcher />
       {/* replace user with the username from the login */}
       <h1 className="text-5xl">Welcome User, {userData.name}</h1>

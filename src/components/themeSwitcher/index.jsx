@@ -4,7 +4,7 @@ import { useThemeContext } from "../../context/ThemeContext";
 
 function ThemeSwitcher() {
   const { theme, toggleTheme } = useThemeContext();
-  const currentTheme = localStorage.getItem('theme')
+  const currentTheme = localStorage.getItem("theme");
 
   return (
     <div className="flex items-center gap-2 fixed top-4 right-4">
@@ -26,5 +26,4 @@ function ThemeSwitcher() {
     </div>
   );
 }
-
 export default ThemeSwitcher;
